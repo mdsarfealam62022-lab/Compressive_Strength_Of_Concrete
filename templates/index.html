@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete Strength Predictor</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Concrete Compressive Strength Predictor</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <main>
+        <section class="hero">
+            <h2>Predict the Strength of Concrete</h2>
+            <p>Enter the component values below to get a prediction.</p>
+        </section>
+
+        <section class="prediction-form">
+            <h3>Predict Concrete Compressive Strength</h3>
+            <form id="predictionForm">
+                <label for="cement">Cement (kg in a m³ mixture):</label>
+                <input type="number" id="cement" name="Cement" step="any" min="0" required><br><br>
+
+                <label for="blast_furnace_slag">Blast Furnace Slag (kg in a m³ mixture):</label>
+                <input type="number" id="blast_furnace_slag" name="Blast_Furnace_Slag" step="any" min="0" required><br><br>
+
+                <label for="fly_ash">Fly Ash (kg in a m³ mixture):</label>
+                <input type="number" id="fly_ash" name="Fly_Ash" step="any" min="0" required><br><br>
+
+                <label for="water">Water (kg in a m³ mixture):</label>
+                <input type="number" id="water" name="Water" step="any" min="0" required><br><br>
+
+                <label for="superplasticizer">Superplasticizer (kg in a m³ mixture):</label>
+                <input type="number" id="superplasticizer" name="Superplasticizer" step="any" min="0" required><br><br>
+
+                <label for="coarse_aggregate">Coarse Aggregate (kg in a m³ mixture):</label>
+                <input type="number" id="coarse_aggregate" name="Coarse_Aggregate" step="any" min="0" required><br><br>
+
+                <label for="fine_aggregate">Fine Aggregate (kg in a m³ mixture):</label>
+                <input type="number" id="fine_aggregate" name="Fine_Aggregate" step="any" min="0" required><br><br>
+
+                <label for="age">Age (day):</label>
+                <input type="number" id="age" name="Age" step="any" min="0" required><br><br>
+
+                <button type="submit">Predict</button>
+                <button type="button" id="clearButton">Clear</button>
+            </form>
+            <h3 id="predictionResult"></h3>
+        </section>
+    </main>
+    <footer>
+      
+        <p>Bhagalpur College Of Engineering, Sabour, 813210</p>
+        <p>Developed by SARFE ALAM (2022-26), Reg. No: 22101108006</p>
+        <p> Helped by: Harish Kumar (2022-26),Reg No: 22101108003 </p>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>
