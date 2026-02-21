@@ -1,4 +1,4 @@
-
+/* 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -94,4 +94,281 @@ footer {
     .hero h2 {
         font-size: 2em;
     }
+} */
+
+
+/* A new line for Css */
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --primary-yellow: #facc15;
+    --active-blue: #3b82f6;
+    --success-green: #22c55e;
+    --border-color: var(--primary-yellow); /* Default state */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Center the Main Content */
+main {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Wrapper & Animated Boundary */
+.form-wrapper {
+    position: relative;
+    padding: 4px; /* Border thickness */
+    border-radius: 15px;
+    background: var(--border-color);
+    transition: all 0.4s ease;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+}
+
+/* Animated Shine Effect */
+.form-wrapper.typing {
+    --border-color: var(--active-blue);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+}
+
+.form-wrapper.predicted {
+    --border-color: var(--success-green);
+    box-shadow: 0 0 35px rgba(34, 197, 94, 0.8);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+.prediction-form {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Grid Layout for Inputs */
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    background: #334155;
+    border: 1px solid #475569;
+    padding: 10px;
+    color: white;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--active-blue);
+}
+
+.button-container {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-predict { background: var(--active-blue); color: white; }
+.btn-clear { background: #64748b; color: white; }
+button:hover { opacity: 0.9; transform: translateY(-2px); }
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+.nav-link {
+    transition: 0.3s;
+    padding: 5px 10px;
+}
+.nav-link:hover {
+    color: var(--active-blue);
+    text-shadow: 0 0 10px var(--active-blue);
+}
+
+/* newly adding */
+
+/* Nav Button Borders */
+nav {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.nav-btn {
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border: 2px solid #ffffff; /* White border */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Header Underline */
+header h1 {
+    text-decoration: underline;
+    text-decoration-color: #e7dcdc; /* Red color */
+    text-underline-offset: 8px;
+    margin-bottom: 20px;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 1px solid #444;
+    width: 100%;
+    text-align: center;
+    background: #1a1a1a;
+}
+
+.team-list {
+    list-style-type: disc;
+    display: inline-block;
+    text-align: left;
+    margin-top: 10px;
+    color: #ccc;
+}
+
+.team-list li {
+    margin-bottom: 5px;
+}
+
+
+/* BLINKING AND COLOR CHANGING ANIMATION */
+.blink-animate {
+    font-size: 2rem;
+    font-weight: bold;
+    animation: pureBlink 10s infinite;
+}
+
+@keyframes pureBlink {
+    0% { color: #ff0000; opacity: 1; }      /* Red */
+    20% { opacity: 0.1; }                   /* Blink Out */
+    25% { color: #00ff00; opacity: 1; }      /* Green */
+    45% { opacity: 0.1; }                   /* Blink Out */
+    50% { color: #3b82f6; opacity: 1; }      /* Blue */
+    70% { opacity: 0.1; }                   /* Blink Out */
+    75% { color: #facc15; opacity: 1; }      /* Yellow */
+    95% { opacity: 0.1; }                   /* Blink Out */
+    100% { color: #ff00ff; opacity: 1; }     /* Magenta */
+}
+
+
+
+ /* A VERY NEW ADDITON */
+
+ /* Result Box Styling */
+.result-box {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: 0.5s ease;
+}
+
+/* LOW STRENGTH: Red Glow */
+.low-strength {
+    color: #ff4d4d !important;
+    background: rgba(255, 77, 77, 0.1);
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+    border-color: #ff4d4d !important;
+}
+
+/* MEDIUM STRENGTH: Blue/Cyan Glow */
+.med-strength {
+    color: #00d4ff !important;
+    background: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    border-color: #00d4ff !important;
+}
+
+/* HIGH STRENGTH: Emerald Green Glow */
+.high-strength {
+    color: #2ecc71 !important;
+    background: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    border-color: #2ecc71 !important;
+}
+
+/* Ensure the border wrapper responds to these classes */
+.form-wrapper.low-strength { background: #ff4d4d; }
+.form-wrapper.med-strength { background: #00d4ff; }
+.form-wrapper.high-strength { background: #2ecc71; }
+
+.status-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.pred-val {
+    font-size: 2.5rem;
+    margin: 5px 0;
+}
+
+
+/* Sandaar step */
+
+/* Result States */
+.low-strength { color: #ff4d4d !important; border-color: #ff4d4d !important; box-shadow: 0 0 20px rgba(255, 77, 77, 0.6); }
+.med-strength { color: #00d4ff !important; border-color: #00d4ff !important; box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); }
+.high-strength { color: #2ecc71 !important; border-color: #2ecc71 !important; box-shadow: 0 0 20px rgba(46, 204, 113, 0.6); }
+
+/* Layout centering for result */
+#resultContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
 }

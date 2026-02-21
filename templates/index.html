@@ -1,4 +1,4 @@
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +12,12 @@
     <header>
         <h1>Concrete Compressive Strength Predictor</h1>
     </header>
-    <!-- <nav> 
+    <nav> 
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </nav>
-    -->
+   
     <main>
         <section class="hero">
             <h2>Predict the Strength of Concrete</h2>
@@ -65,4 +65,142 @@
     </footer>
     <script src="static/script.js"></script>
 </body>
-</html>
+</html> -->
+
+<!-- A HTML code for updation -->
+
+<body>
+    <header>
+        <h1>Concrete Compressive Strength Predictor</h1>
+         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+         <!-- for download pdf -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    </header>
+  <nav> 
+    <a href="/" class="nav-btn">Home</a>
+    <a href="https://www.linkedin.com/in/sarfe-alam-92a213300/" target="_blank" class="nav-btn">About</a>
+    <a href="mailto:mdsarfealam62022@gmail.com" class="nav-btn">Contact</a>
+</nav>
+   
+    <main>
+        <section class="hero">
+           <h2 class="blink-animate">Predict the Strength of Concrete</h2>
+            <p>Enter the component values below to get a prediction.</p>
+        </section>
+
+        <div class="form-wrapper" id="borderWrapper">
+            <section class="prediction-form">
+                <h3>Input Parameters</h3>
+                <form id="predictionForm">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="cement">Cement (kg/m³)</label>
+                            <input type="number" id="cement" name="Cement" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="blast_furnace_slag">Blast Furnace Slag(kg/m³)</label>
+                            <input type="number" id="blast_furnace_slag" name="Blast_Furnace_Slag" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="fly_ash">Fly Ash (kg/m³)</label>
+                            <input type="number" id="fly_ash" name="Fly_Ash" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="water">Water (kg/m³)</label>
+                            <input type="number" id="water" name="Water" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="superplasticizer">Superplasticizer(kg/m³)</label>
+                            <input type="number" id="superplasticizer" name="Superplasticizer" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="coarse_aggregate">Coarse Aggregate(kg/m³)</label>
+                            <input type="number" id="coarse_aggregate" name="Coarse_Aggregate" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="fine_aggregate">Fine Aggregate(kg/m³)</label>
+                            <input type="number" id="fine_aggregate" name="Fine_Aggregate" step="any" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="age">Age (days)</label>
+                            <input type="number" id="age" name="Age" step="any" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button type="submit" class="btn-predict">Predict Strength</button>
+                        <button type="button" id="clearButton" class="btn-clear">Clear</button>
+                    </div>
+                </form>
+                <div id="resultContainer">
+                    <h3 id="predictionResult"></h3>
+                </div>
+            </section>
+
+
+</div>
+
+<!-- Pdf download button code  -->
+
+<div id="resultContainer">
+    <h3 id="predictionResult"></h3>
+    <button type="button" id="downloadBtn" class="nav-btn" style="display: none; margin-top: 20px; background-color: #22c55e;">
+        Download PDF Report
+    </button>
+</div>
+
+<div id="pdfTemplate" style="display: none;">
+    <div style="padding: 40px; color: #000; background: #fff; font-family: 'Arial', sans-serif; line-height: 1.6;">
+        <div style="text-align: center; border-bottom: 3px solid #ff0000; padding-bottom: 10px; margin-bottom: 20px;">
+            <h1 style="margin: 0; font-size: 24px;">Concrete Strength Analysis Report</h1>
+            <p style="margin: 5px 0; font-weight: bold;">Lead Developer: SARFE ALAM</p>
+        </div>
+
+        <p style="text-align: right; font-size: 12px;">Date: <span id="pdfDate"></span></p>
+
+        <h3 style="background: #f4f4f4; padding: 10px;">1. Design Mix Parameters</h3>
+        <div id="pdfInputGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+            </div>
+
+        <h3 style="background: #f4f4f4; padding: 10px;">2. Prediction Result</h3>
+        <div style="text-align: center; padding: 20px; border: 2px solid #ccc; border-radius: 10px; margin-bottom: 20px;">
+            <h2 id="pdfStrengthResult" style="margin: 0; font-size: 32px; color: #1a73e8;"></h2>
+            <p id="pdfCategory" style="font-weight: bold; text-transform: uppercase; margin-top: 5px;"></p>
+        </div>
+
+        <h3 style="background: #f4f4f4; padding: 10px;">3. Recommended Applications</h3>
+        <p id="pdfUsageText" style="font-size: 14px; padding: 0 10px;"></p>
+
+        <div style="margin-top: 50px; text-align: center; font-size: 10px; color: #666; border-top: 1px solid #eee; padding-top: 10px;">
+            <p>Bhagalpur College Of Engineering, Sabour, 813210</p>
+            <p>This report is generated using Machine Learning (Stacking Regressor) Prediction Models.</p>
+        </div>
+    </div>
+</div>
+<!-- Pdf download button code  -->
+
+
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><strong>Developed by:</strong> SARFE ALAM</p>
+        <p><strong>Helped by:</strong> HARISH KUMAR</p>
+        <p><strong>Team Members:</strong></p>
+        <ul class="team-list">
+            <li>Vikash Kumar</li>
+            <li>Ritika Rani</li>
+            <li>Sahil Raj</li>
+            <li>Rishikesh Raman</li>
+            <li>Astitva Kaushal</li>
+        </ul>
+    </div>
+</footer>
+
+</div>
+    </main>
+
+     <script src="static/script.js"></script>
+
+    </body>
