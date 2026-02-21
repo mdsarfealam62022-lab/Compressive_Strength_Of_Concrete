@@ -84,45 +84,28 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # 1. Check if model loaded correctly
-    if not stacking_model:
-        return jsonify({'error': 'Model not initialized on server'}), 500
-
     try:
-        # 2. Get and validate JSON data
         data = request.get_json(force=True)
-        
+
         feature_names = [
             'Cement', 'Blast_Furnace_Slag', 'Fly_Ash', 'Water',
             'Superplasticizer', 'Coarse_Aggregate', 'Fine_Aggregate', 'Age'
         ]
 
-        # Ensure all features exist in the request
-        if not all(k in data for k in feature_names):
-            return jsonify({'error': 'Missing input parameters'}), 400
-
-        # 3. Convert to DataFrame (Better for Poly/Scaler consistency)
+        # Convert to DataFrame to keep feature names
         input_values = [float(data[name]) for name in feature_names]
         df_input = pd.DataFrame([input_values], columns=feature_names)
 
-        # 4. Pipeline Transformation
-        # Raw -> Polynomial -> Scaled -> Prediction
+        # Now transformations won't throw warnings
         poly_features = poly_transformer.transform(df_input)
         scaled_features = scaler_poly.transform(poly_features)
         
         prediction = stacking_model.predict(scaled_features)
-        
-        # Rounding to 2 decimal places for a cleaner UI
         result = round(float(prediction[0]), 2)
 
-        return jsonify({
-            'success': True,
-            'prediction': result,
-            'unit': 'MPa'
-        })
+        return jsonify({'success': True, 'prediction': result, 'unit': 'MPa'})
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 400
-
+        return jsonify({'success': False, 'error': str(e)}), 400
 if __name__ == '__main__':
     app.run(debug=True)
